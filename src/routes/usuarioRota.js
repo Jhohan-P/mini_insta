@@ -1,13 +1,17 @@
 const express = require('express');
 const cadastrarUsuario = require('../controllers/cadastrarUsuario');
+const detalharPerfil = require('../controllers/detalharPerfil');
+const verificacaoDoToken = require('../middlewares/validacaoToken');
+const atualizarUsuario = require('../controllers/atualizarUsuario');
 
 const rotas = express.Router()
 
 rotas.post('/', cadastrarUsuario)
-// rota de cadastro
-rotas.get('/',)
-// rota para detalhar o perfil
-rotas.post('/',)
-// atulizar perfil
+
+rotas.use(verificacaoDoToken)
+
+rotas.get('/', detalharPerfil)
+rotas.put('/', atualizarUsuario)
+
 
 module.exports = rotas
