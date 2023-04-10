@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const knex = require('../connections/pg');
-require('dotenv').config()
+const knex = require('../connections/knex');
 
 const verificacaoDoToken = async (req, res, next) => {
     const { authorization } = req.headers
